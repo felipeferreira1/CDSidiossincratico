@@ -4,7 +4,7 @@
 
 #Definindo diretórios a serem utilizados
 getwd()
-setwd("C:/Users/User/OneDrive/Códigos a serem testados")
+setwd("C:/Users/User/Documents")
 
 #Carregando pacotes que serão utilizados
 library(xts)
