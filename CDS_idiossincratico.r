@@ -1,6 +1,6 @@
 #Rotina para calcular o CDS idiossincrático para o Brasil
 #Adaptado por: Felipe Simplício Ferreira
-#última atualização: 20/09/2020
+#última atualização: 10/11/2020
 
 #Definindo diretórios a serem utilizados
 getwd()
@@ -10,6 +10,7 @@ setwd("C:/Users/User/Documents")
 library(xts)
 library(dynlm)
 library(timeDate)
+library(rio)
 
 #Importando dados CDS
 dados = read.csv('CDS_tratado.csv',sep=";",dec=",",header=T)
@@ -54,8 +55,10 @@ colnames(dados_exp) = c("Data", "Brasil", "Indonésia", "Turquia", "Colômbia", "P
                          "Marrocos",	"Polônia",	"Rússia",	"África do Sul",	"Eslovênia",	"Tailândia",	"Butão",
                          "Vietnam", "Primeiro componente principal *(-1)")
 write.csv2(dados_exp, file = "dados_CDS.csv", row.names = F)
+export(dados_exp, "CDS.xlsx", sheetName = "dados_CDS")
 
 dados_exp2=as.data.frame(cbind(CDSBRA_semdata,fit,resid))
 dados_exp2=cbind(data_dados, dados_exp2)
 colnames(dados_exp2) = c("Data", "CDS Brasil", "Ajustado", "Resíduo")
 write.csv2(dados_exp2, file = "dados_risco_bra.csv", row.names = F)
+export(dados_exp2, "CDS.xlsx", which = "dados_risco_bra")
