@@ -1,5 +1,5 @@
 getwd()
-setwd("C:/Users/marce/OneDrive/Área de Trabalho/Ipea/CDS")
+#setwd("C:/Users/marce/OneDrive/Área de Trabalho/Ipea/CDS")
 
 rm(list=ls())
 
@@ -15,11 +15,11 @@ library(glmnet)
 
 #dados<-read.csv('CDS_GP_21_09_2018_tratado.csv',sep=";",dec=",",header=T)
 #dados<-read.csv('CDS_GP_14_12_2018_tratado.csv',sep=";",dec=",",header=T)
-dados<-read.csv('CDS_GP_14_12_2018_tratado_test.csv',sep=";",dec=",",header=T)
+dados<-read.csv('CDS_tratado.csv',sep=";",dec=",",header=T)
 #dados<-read.csv('CDS_05-11-19.csv',sep=";",dec=",",header=T)
 # inicio = 06-10-2000
 dados=xts(dados[,-1],as.Date(dados[,1],format="%m/%d/20%y"))
-dados=na.approx(dados/1000)
+dados=na.approx(dados)
 head(dados)
 dados[,1]
 

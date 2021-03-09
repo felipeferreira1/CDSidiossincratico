@@ -15,7 +15,7 @@ library(rio)
 #Importando dados CDS
 dados = read.csv('CDS_tratado.csv',sep=";",dec=",",header=T)
 dados[,1] = as.Date(dados[,1],format="%d-%m-%y") #Formatando coluna de datas
-dados[,-1] = na.approx(dados[,-1]/1000) #Faz uma interpolação para tirar NA's dos dados
+dados[,-1] = na.approx(dados[,-1]) #Faz uma interpolação para tirar NA's dos dados
 
 #Definindo subamostra
 dados_s = dados[,-c(11,15)] #Argentina e Grécia retiradas da subamostra
